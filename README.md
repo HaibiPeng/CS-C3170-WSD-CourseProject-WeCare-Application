@@ -65,5 +65,5 @@ if (morning data reported) {
       insert the morning data using ‘INSERT’ in SQL, where all the morning reporting values are need
     }
 
-And it is the same logic with the night data.
+And it is the same logic with the night data. 
 
