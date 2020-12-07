@@ -1,0 +1,41 @@
+<%- include('./partials/header.ejs') %>
+<center class="form">
+<h2 align="center">Register to WeCare:</h2>
+<table align="right">
+<form method="POST" action="/auth/registration">
+    <tbody>
+    <tr>
+        <th>Email : <div class="register"><input type="email" name="email" required="true" placeholder="email" value="<%= email %>"/></div></th>
+    </tr>
+    <tr align="center">
+        <th class="errors"><%- include('errors.ejs', { errors: errors, attribute: 'email'}) %><%- include('errors.ejs', { errors: errors, attribute: 'existing'}) %></th>
+    </tr>
+    <tr>
+        <th>Password : <div class="register"><input type="password"  minlength="4" placeholder="password" name="password" required="true"/></div></th>
+    </tr>
+    <tr align="center">
+        <th class="errors"></div><%- include('errors.ejs', { errors: errors, attribute: 'password'}) %></th>
+    </tr>
+    <tr>
+        <th>Verify your password : <div class="register"><input type="password" minlength="4" placeholder="password again" name="verification" required="true"/></div></th>
+    </tr>
+    <tr><th><div class="errors"><%- include('errors.ejs', { errors: errors, attribute: 'verification'}) %></div></th></tr>
+    <tr align="center"><th><input type="submit" value="Register!"/></th></tr>
+    </tbody>
+</form>
+<tr><th><p></p></th></tr>
+<form method="GET" action="/auth/login">
+    <tbody>
+        <tr>
+            <th>Already a user?</th>
+        </tr>
+        <tr><th><p></p></th></tr>
+        <tr align="center"><th><input type="submit" value="Go to login!" /></th></tr>
+    </tbody>
+</form>
+</table>
+<% if (success) { %>
+    <div id="success"><%= success %></div>
+<% } %>
+</center>
+<%- include('./partials/footer.ejs') %>

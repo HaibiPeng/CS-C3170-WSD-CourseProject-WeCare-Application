@@ -1,0 +1,31 @@
+<%- include('./partials/header.ejs') %>
+<h2 class="morning">Morning reporting</h2>
+<center class="morningreport">
+<div align="center"><img src="../static/morning.jpg" style="height:250px;width:250px;"/></div>
+<p></p>
+<p>Good morning! How was your sleep last night?</p>
+<p></p>
+<form method="POST" action="/behavior/reportingmorning">
+    <table align="center">
+        <tr align="center">
+        <th>Choose date : <div class="register"><input type="date" name="date" value="<%= date %>" /></div></th>
+        </tr>
+        <tr align="center">
+        <th>How long did you sleep for last night? (can be decimal)  <div class="register"><input type="number" name="sleepduration" min="0" max="24" step="0.1" required="true" value="<%= sleepduration %>" style="width:100px;height:40px" /></div></th>
+        </tr>
+        <tr align="center">
+        <th>From 1 - 5, how do you rate you sleep quality last night?  <div class="register"><input type="range" name="sleepquality" min="1" max="5" step="1" value="<%= sleepquality %>" onchange="rangeinput.value=value"/></div>  <div class="register"><output id="rangeinput"></output></div></th>
+        </tr>
+        <tr align="center">
+        <th>From 1 - 5, how do you rate you generic mood this morning?  <div class="register"><input type="range" name="mgenericmood" min="1" max="5" step="1" value="<%= mgenericmood %>" onchange="rangevalue.value=value"/></div>  <div class="register"><output id="rangevalue"></output></div></th>
+        </tr>
+        <tr align="center"><th><input type="submit" value="Submit!" /></th></tr>
+    </table>
+</form>
+<p></p>
+<div class="register"><form method="GET" action="/behavior/reporting"><input type="submit" value="Choose to report!" /></form></div>
+<div class="register"><form method="GET" action="/behavior/summary"><input type="submit" value="See summary"/></form></div>
+</center>
+<div id="loggedin">Logged in as <%= email %></div>
+<form id="logout" method="GET" action="/auth/logout"><input type="submit" value="Logout" /></form>
+<%- include('./partials/footer.ejs') %>

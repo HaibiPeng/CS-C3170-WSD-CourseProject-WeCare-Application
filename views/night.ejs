@@ -1,0 +1,34 @@
+<%- include('./partials/header.ejs') %>
+<h2 class="night">Night reporting</h2>
+<center class="nightreport">
+<div align="center"><img src="../static/night.jpg" style="height:200px;width:200px;"/></div>
+<p></p>
+<p>Good evening! How was your day?</p>
+<p></p>
+<form method="POST" action="/behavior/reportingnight">
+    <table align="center">
+        <tr align="center">
+        <th>Choose date : <div class="register"><input type="date" name="date" value="<%= date %>" /></div></th>
+        </tr>
+        <tr align="center">
+        <th>How long did you do sports and exercise today? (can be decimal)  <div class="register"><input type="number" name="sporttime" min="0" max="24" step="0.1" required="true" value="<%= sporttime %>" style="width:100px;height:35px" /></div></th>
+        </tr>
+        <tr align="center">
+        <th>How long did you do study today? (can be decimal)  <div class="register"><input type="number" name="studytime" min="0" max="24" step="0.1" required="true" value="<%= studytime %>" style="width:100px;height:35px" /></div></th>
+        </tr>
+        <tr align="center">
+        <th>From 1 - 5, how do you rate you regularity and quality of eating?  <div class="register"><input type="range" name="eatregnqua" min="1" max="5" step="1" value="<%= eatregnqua %>" onchange="rangeinput.value=value"/></div>  <div class="register"><output id="rangeinput"></output></div></th>
+        </tr>
+        <tr align="center">
+        <th>From 1 - 5, how do you rate you generic mood this evening?  <div class="register"><input type="range" name="ngenericmood" min="1" max="5" step="1" value="<%= ngenericmood %>" onchange="rangevalue.value=value"/></div>  <div class="register"><output id="rangevalue"></output></div></th>
+        </tr>
+        <tr align="center"><th><input type="submit" value="Submit!" /></th></tr>
+    </table>
+</form>
+<p></p>
+<div class="register"><form method="GET" action="/behavior/reporting"><input type="submit" value="Choose to report!" /></form></div>
+<div class="register"><form method="GET" action="/behavior/summary"><input type="submit" value="See summary"/></form></div>
+</center>
+<div id="loggedin">Logged in as <%= email %></div>
+<form id="logout" method="GET" action="/auth/logout"><input type="submit" value="Logout" /></form>
+<%- include('./partials/footer.ejs') %>

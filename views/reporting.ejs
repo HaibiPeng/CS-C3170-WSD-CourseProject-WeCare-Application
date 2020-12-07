@@ -1,0 +1,27 @@
+<%- include('./partials/header.ejs') %>
+<h2 class="reporting">Choose report time</h2>
+<center class="report">
+<div align="center"><img src="../static/date.png" style="height:250px;width:250px;" /></div>
+<p></p>
+<form method="POST" action="/behavior/reporting">
+<div class="register"><p>Choose date to check reports : </p></div>
+<div class="register"><input type="date" name="date" value="<%= date %>" /></div>
+<div class="register"><input type="submit" value="Check" /></div>
+</form>
+<table align="center">
+    <tr>
+        <th><p><%= date %> morning reporting : <%= morningInfo %></p></th>
+    </tr>
+    <tr>
+        <th><p><%= date %> night reporting : <%= nightInfo %></p></th>
+    </tr>
+</table>
+<div class="mood"><form method="GET" action="/behavior/reportingmorning"><input type="submit" value="Morning" /></form></div>
+<div class="mood"><form method="GET" action="/behavior/reportingnight"><input type="submit" value="Night" /></form></div>
+<p></p>
+<div class="mood"><form method="GET" action="/behavior/summary"><input type="submit" value="See summary" /></form></div>
+<div class="mood"><form method="GET" action="/landing"><input type="submit" value="Landing page" /></form></div>
+</center>
+<div id="loggedin">Logged in as <%= email %></div>
+<form id="logout" method="GET" action="/auth/logout"><input type="submit" value="Logout" /></form>
+<%- include('./partials/footer.ejs') %>

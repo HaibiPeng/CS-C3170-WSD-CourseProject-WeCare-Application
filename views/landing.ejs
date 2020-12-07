@@ -1,0 +1,45 @@
+<%- include('./partials/header.ejs') %>
+<h2 class="landing" align="center">Landing page</h2>
+<div id="purpose">
+    <h3>What is this application for?</h3>
+    <p>This web application is for self-monitoring purposes. The application provides users an opportunity to report behavior daily.</p>
+    <p>The behavior reported to the application are as follows:</p>
+    <ul>
+        <li>Sleep duration and sleep quality</li>
+        <li>Time spent on sports and exercise</li>
+        <li>Time spent studying</li>
+        <li>Regularity and quality of eating</li>
+        <li>Generic mood</li>
+    </ul>
+</div>
+<center id="glimpse">
+<h3>A glimpse at the data:</h3>
+<table class="form" align="center">
+    <tbody>
+        <tr>
+            <th>The average mood yesterday : <div class="mood"><%= yesterdaymood %></div></th>
+        </tr>
+        <tr><th><p></p></th></tr>
+        <tr>
+            <th>The average mood today : <div class="mood"><%= todaymood %></div></th>
+        </tr>
+        <tr><th><p></p></th></tr>
+        <tr>
+            <th>Tip : <div class="mood"><%= trend %></div></th>
+        </tr>
+        <tr>
+            <% if (notodaydata) { %>
+            <th><div class="mood"><%= notodaydata %></div></th>
+            <% } %>
+        </tr>
+        <tr>
+            <% if (noyesterdaydata) { %>
+            <th><div class="mood"><%= noyesterdaydata %></div></th>
+            <% } %>
+        </tr>
+</table>
+    <p></p>
+    <div class="mood"><form method="GET" action="/auth/registration"><input type="submit" value="Go to register" style="width:150px"/></form></div>
+    <div class="mood"><form method="GET" action="/auth/login"><input type="submit" value="Go to login" style="width:150px"/></form></div>
+</center>
+<%- include('./partials/footer.ejs') %>
